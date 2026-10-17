@@ -1,69 +1,48 @@
+﻿"use client";
 import Image from "next/image";
-
+import Motion from "./motion";
+import { useRef, useState } from "react";
+const projects = [
+  ["Beyond the horizon", "Art direction", "photo-1464822759023-fed622ff2c3b", "Dramatic mountain peaks beneath atmospheric clouds"],
+  ["Synthetic nature", "3D & CGI", "photo-1534447677768-be436bb09401", "A luminous violet nebula in deep space"],
+  ["Concrete utopia", "Photography", "photo-1487958449943-2429e8be8625", "Sculptural white architecture against the sky"],
+  ["After hours", "Art direction", "photo-1519608487953-e999c86e7455", "Dreamlike purple and pink night sky"],
+  ["Liquid state", "3D & CGI", "photo-1557683316-973673baf926", "Fluid electric blue and violet gradients"],
+  ["Into the void", "Photography", "photo-1446776811953-b23d57bd21aa", "The glowing curve of Earth seen from orbit"],
+  ["Desert frequency", "Art direction", "photo-1509316785289-025f5b846b35", "Sculptural golden sand dunes"],
+  ["Future in bloom", "3D & CGI", "photo-1518837695005-2083093ee35b", "Ocean waves meeting a soft blue horizon"],
+];
+const descriptions = ["An exploration of scale, silence, and landscapes that exist just beyond the familiar.", "Organic energy meets digital imagination in a study of light and impossible worlds.", "Finding a new perspective through architectural rhythm and negative space.", "A cinematic color story for the moments between day and night.", "An experiment in transformation, turning pure color into a digital landscape.", "A perspective shift exploring our connection to a world without borders.", "Minimal forms and infinite repetition, inspired by the natural geometry of the desert.", "An imagined future built around fluid shapes, open space, and quiet optimism."];
 export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+  const [motionPaused, setMotionPaused] = useState(false);
+  const [filter, setFilter] = useState("All work");
+  const [selected, setSelected] = useState(0);
+  const dialog = useRef<HTMLDialogElement>(null);
+  const [shareStatus, setShareStatus] = useState("");
+  return <div className="portfolio" data-motion-paused={motionPaused}>
+    <Motion revision={filter} />
+    <header><a className="logo" href="#" aria-label="Nova home"><span>&#10035;</span> nova<sup>®</sup></a><nav aria-label="Main navigation"><a className="active" href="#work">Work <sup>08</sup></a><a href="#about">About</a><a href="#contact">Let’s talk &#8599;</a></nav><span className="available"><i /> Available for select projects</span></header>
+    <main>
+      <section className="hero">
+        <div className="hero-top"><span className="eyebrow"><b>+</b> INDEPENDENT DESIGN & DIGITAL ART</span><span className="edition">A VISION OF 2050 / VOL. 01</span></div>
+        <div className="hero-art" aria-hidden="true"><div className="orb-glow" /><div className="orb"><div className="orb-ring" /><div className="orb-ring second" /><div className="orb-ring third" /></div><div className="holo-panel panel-top"><span className="panel-icon">&#9671;</span><div><small>BEYOND THE PHYSICAL</small><strong>A new dimension.</strong></div><span>&#8599;</span></div><div className="holo-panel panel-bottom"><span className="panel-status"><i /> FORM STUDY / 001</span><strong>Art meets the algorithm.</strong><div className="waveform" aria-hidden="true">{Array.from({ length: 28 }, (_, i) => <span key={i} style={{ height: `${8 + ((i * 17 + 11) % 31)}px` }} />)}</div><small>AT THE EDGE OF POSSIBILITY</small></div><span className="art-coordinate">EXPERIMENT 001<br />FORM / LIGHT / POSSIBILITY</span><span className="art-label">THE SHAPE OF WHAT COMES NEXT</span></div>
+        <div className="hero-copy"><span className="hero-kicker">DESIGNING TOMORROW, TODAY.</span><h1>Beyond<br />Imagination.<br /><em>Into the Future.</em></h1><p>Immersive worlds. Bold identities. Digital experiences<br />that live beyond the screen.</p><a className="hero-cta" href="#work">Explore the future <span>&#8599;</span></a></div>
+        <div className="hero-bottom"><span className="eyebrow">DIGITAL CRAFT. HUMAN INSTINCT.</span><a href="#work">SCROLL TO EXPLORE <span>&#8595;</span></a></div><div className="rule" />
+      </section>
+      <div className="discipline-strip"><span>ART DIRECTION</span><b>&#10022;</b><span>IMMERSIVE EXPERIENCES</span><b>&#10022;</b><span>DIGITAL ARTISTRY</span><b>&#10022;</b><span>FUTURE THINKING</span></div>      <section id="about" className="about vision-section" aria-labelledby="vision-title"><div className="vision-aside"><span className="eyebrow">01 / ABOUT THE FUTURE</span><div className="vision-sculpture" aria-hidden="true"><span /><span /><span /><span /><span /><div className="vision-orbit" /></div><span className="vision-note">HUMAN IMAGINATION.<br />INFINITE DIMENSIONS.</span></div><div><span className="section-kicker">A DIFFERENT WAY TO SEE.</span><h2 id="vision-title">The future isn't somewhere we go.<br /><em>It's something we create.</em></h2><p>We imagine a world where technology feels instinctive and every digital encounter inspires something real. Where a bold idea becomes an identity, an experience, or an entirely new reality.</p><p>Nova is a concept studio at the meeting point of design and possibility. These visual explorations are our invitation to look beyond the familiar.</p><a className="text-link" href="#innovation">Discover our approach <span>&#8599;</span></a></div></section>
+      <section id="innovation" className="innovation" aria-labelledby="innovation-title"><div className="section-heading"><div><span className="eyebrow">02 / INNOVATION SHOWCASE</span><h2 id="innovation-title">Ideas with <em>no edges.</em></h2></div><p>New tools. Unfamiliar perspectives.<br />One endlessly curious creative practice.</p></div><div className="innovation-grid">{[
+        { title: "Spatial worlds", icon: "spatial", tag: "01 / IMMERSIVE DESIGN", summary: "Experiences that extend beyond the frame.", detail: "We explore spatial interfaces, dimensional storytelling, and environments that invite people to step inside the idea." },
+        { title: "Intelligent artistry", icon: "intelligence", tag: "02 / GENERATIVE THINKING", summary: "Human intuition. Computational possibility.", detail: "A creative practice where emerging tools open new directions in composition, material, and visual expression, guided by a human point of view." },
+        { title: "Living identities", icon: "identity", tag: "03 / DIGITAL EXPRESSION", summary: "Brands designed to move, adapt, and connect.", detail: "Visual systems imagined in motion: expressive typography, responsive interactions, and a recognizable character across every touchpoint." },
+      ].map(card => <details className="innovation-card" key={card.title}><summary><div className={`innovation-art ${card.icon}`} aria-hidden="true"><span /><span /><span /><span /></div><span className="eyebrow">{card.tag}</span><h3>{card.title}</h3><p>{card.summary}</p><span className="card-expand">EXPLORE THE IDEA <b>+</b></span></summary><div className="innovation-detail">{card.detail}<a className="text-link" href="#contact">Imagine it with us &#8599;</a></div></details>)}</div></section><section id="work" className="work"><div className="toolbar"><div><span className="eyebrow">03 / DIGITAL EXPERIENCES</span><h2>Cinematic <em>possibilities.</em> <sup>(08)</sup></h2></div><button className="motion-toggle" aria-pressed={motionPaused} onClick={() => setMotionPaused(!motionPaused)}>{motionPaused ? "Play animations" : "Pause animations"}</button><div className="filters" aria-label="Filter projects">{["All work", "Art direction", "3D & CGI", "Photography"].map(item => <button key={item} className={filter === item ? "selected" : ""} aria-pressed={filter === item} onClick={() => setFilter(item)}>{item}{item === "All work" && <small>08</small>}</button>)}</div></div><div key={filter} className="grid" aria-live="polite">{projects.map((project, index) => (filter === "All work" || filter === project[1]) && <button className="project" key={project[0]} onClick={() => { setSelected(index); dialog.current?.showModal(); }} aria-label={`View ${project[0]}`}><div className={`project-image motion-scene scene-${index}`}><div className="scene-frame"><Image src={`https://images.unsplash.com/${project[2]}?auto=format&fit=crop&w=1400&q=85`} alt={project[3]} fill unoptimized sizes="(max-width: 680px) 100vw, 50vw" loading={index < 2 ? "eager" : "lazy"} /></div><span className="scene-atmosphere" aria-hidden="true" /><span className="motion-badge" aria-hidden="true"><i /> MOTION STUDY</span><span className="index">{String(index + 1).padStart(2,"0")} / 08</span><span className="open">&#8599;</span><span className="caption">NOVA STUDIO — VISUAL EXPLORATIONS</span></div><div className="project-meta"><h3>{project[0]}</h3><span>{project[1]} <b>/</b> 2026</span></div></button>)}</div><div className="archive"><span>END OF SELECTION</span><b>+</b><span>ALWAYS EXPLORING. ALWAYS EVOLVING.</span></div></section>
+
+      <section id="possibilities" className="possibilities" aria-labelledby="possibilities-title"><div className="possibility-halo" aria-hidden="true" /><span className="eyebrow">04 / EXPLORE POSSIBILITIES</span><h2 id="possibilities-title">What if<br /><em>was just the beginning?</em></h2><p>The next extraordinary experience starts<br />with a single, wonderfully unexpected idea.</p><a className="hero-cta" href="#contact">Make the leap <span>&#8599;</span></a><div className="possibility-foot"><span>NO BLUEPRINT. NO BOUNDARIES.</span><span>ONLY POSSIBILITY. &#10022;</span></div></section>      <section id="contact" className="contact"><div><span className="eyebrow"><i /> OPEN TO WHAT’S NEXT</span><h2>Have a wild idea?<br /><a href="mailto:hello@nova.studio">Let’s make it real. &#8599;</a></h2></div><a className="contact-circle" href="mailto:hello@nova.studio">LET’S TALK<span>&#8599;</span></a></section>
+    </main><footer><div className="footer-brand"><a className="logo" href="#">&#10035; nova<sup>&reg;</sup></a><p>Independent minds.<br />Extraordinary futures.</p></div><nav className="footer-navigation" aria-label="Footer navigation"><a href="#about">Vision</a><a href="#innovation">Innovation</a><a href="#work">Experiences</a><a href="#contact">Contact</a></nav><div className="footer-social"><a href="mailto:hello@nova.studio" aria-label="Email Nova"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" /><path d="m3 6 9 7 9-7" /></svg></a><button aria-label="Share portfolio on LinkedIn" onClick={() => window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href.split("#")[0])}`, "_blank", "noopener,noreferrer")}><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 8h3v12H5zm1.5-5a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 0 0 0-3.6M11 8h3v1.6c.8-1.2 1.8-1.9 3.4-1.9 3 0 3.6 2 3.6 4.6V20h-3v-6.8c0-1.6-.2-2.7-1.8-2.7-1.8 0-2.2 1.3-2.2 3V20h-3z" /></svg></button><button aria-label="Copy portfolio link" onClick={async () => { try { await navigator.clipboard.writeText(window.location.href.split("#")[0]); setShareStatus("Portfolio link copied."); } catch { setShareStatus("Copy the address from your browser to share this portfolio."); } }}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" aria-hidden="true"><path d="m10 14 4-4m-6 5-1 1a4 4 0 0 1-6-6l4-4a4 4 0 0 1 6 0m2 3 1-1a4 4 0 0 1 6 6l-4 4a4 4 0 0 1-6 0" transform="translate(2 1) scale(.85)" /></svg></button><span className="share-status" role="status">{shareStatus}</span></div><div className="footer-bottom"><span>&copy; 2026 NOVA STUDIO / CONCEPT PORTFOLIO</span><span>IMAGINED FOR TOMORROW. CRAFTED TODAY.</span><a href="#">BACK TO TOP &#8593;</a></div></footer>
+    <dialog aria-labelledby="project-title" ref={dialog} onClick={e => { if(e.target === e.currentTarget) dialog.current?.close(); }}><div className="dialog-content"><button className="close" onClick={() => dialog.current?.close()} aria-label="Close project">&#10005;</button><div className="detail-image"><Image src={`https://images.unsplash.com/${projects[selected][2]}?auto=format&fit=crop&w=1800&q=90`} alt={projects[selected][3]} fill unoptimized sizes="90vw" /></div><div className="detail-copy"><span className="eyebrow">{projects[selected][1]} / CONCEPT STUDY / 2026</span><h2 id="project-title">{projects[selected][0]}</h2><p>{descriptions[selected]}</p></div></div></dialog>
+  </div>;
 }
+
+
+
+
+

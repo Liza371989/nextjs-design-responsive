@@ -1,0 +1,161 @@
+/* Shared optical surfaces and typography for Nova's midnight glass direction. */
+:root {
+  --glass-fill: linear-gradient(135deg, #d8eaff12, #aac7ff06 48%, #be9cff0b);
+  --glass-border: #d5e6ff30;
+  --glass-shadow: inset 0 1px 0 #ffffff1c, inset 1px 0 0 #ffffff08,
+    0 16px 50px #02041135;
+}
+
+body {
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  background:
+    radial-gradient(ellipse at 92% 5%, #7054c02e, transparent 28%),
+    radial-gradient(ellipse at 3% 27%, #287b9a24, transparent 24%),
+    radial-gradient(ellipse at 82% 56%, #5d4eab20, transparent 28%), #080c16;
+}
+
+header,
+.holo-panel,
+.innovation-card,
+.project,
+.filters,
+.motion-toggle,
+.contact-circle,
+.footer-social a,
+.footer-social button {
+  background: var(--glass-fill);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(22px) saturate(135%);
+  backdrop-filter: blur(22px) saturate(135%);
+}
+
+header { border-radius: 20px; height: 82px; }
+.logo { font-family: var(--font-geist-sans), sans-serif; font-weight: 600; letter-spacing: -.07em; }
+nav a { font-size: 12px; letter-spacing: -.015em; font-weight: 500; color: #c6d0e3; }
+.available { color: #bdc9e0; letter-spacing: .015em; }
+
+h1, h2, h3 { text-wrap: balance; }
+.hero-copy h1 {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: clamp(56px, 6.6vw, 108px);
+  line-height: 1.075;
+  letter-spacing: -.067em;
+  font-weight: 400;
+  color: #f1f5ff;
+  text-shadow: 0 3px 32px #d0dfff0b;
+}
+.hero-copy h1 em {
+  font-style: normal;
+  font-weight: 300;
+  letter-spacing: -.068em;
+  background: linear-gradient(110deg, #d3ffff, #a7d8ff 42%, #c6b4fa 85%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-copy > p { font-size: 13px; color: #b4bfd7; line-height: 1.95; letter-spacing: -.01em; }
+.hero-kicker, .eyebrow, .section-kicker { font-weight: 400; letter-spacing: .17em; }
+.hero-kicker { color: #b3edff; }
+.eyebrow { color: #b0c1df; }
+.vision-section h2, .section-heading h2, .toolbar h2, .contact h2 {
+  font-family: var(--font-geist-sans), sans-serif;
+  font-weight: 400;
+  letter-spacing: -.05em;
+}
+.vision-section h2 { line-height: 1.2; }
+.vision-section h2 em, .section-heading h2 em, .toolbar h2 em {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 300;
+  color: #b7c5e7;
+}
+.vision-section p, .innovation-detail { color: #b2bfd8; line-height: 1.95; }
+.section-heading > p { color: #aab8d1; }
+
+.holo-panel { border-radius: 17px; background-color: #22314b26; }
+.holo-panel strong { letter-spacing: -.035em; font-weight: 500; }
+.holo-panel small { color: #c0cde6; }
+.innovation-card { position: relative; border-radius: 22px; }
+.innovation-card summary { position: relative; }
+.innovation-card summary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 21px;
+  background: linear-gradient(120deg, #ffffff08, transparent 35% 70%, #d0eaff04);
+}
+.innovation-card h3 { font-size: 23px; font-weight: 450; letter-spacing: -.045em; }
+.innovation-card p { color: #b4c0d7; font-size: 12px; }
+.innovation-card:hover, .innovation-card[open] {
+  border-color: #bedfff70;
+  box-shadow: var(--glass-shadow), 0 0 40px #9cbcff0e;
+}
+.project { border-radius: 20px; background-color: #101a2b40; }
+.project-image { margin: 7px 7px 0; border-radius: 14px !important; }
+.project-meta { padding: 21px 23px 23px; }
+.project-meta h3 { font-weight: 450; letter-spacing: -.035em; font-size: 18px; }
+.project-meta > span { font-family: var(--font-geist-mono), monospace; font-size: 8px; color: #b3c3df; }
+.project-meta b { color: #8799bb; }
+.project:hover { box-shadow: var(--glass-shadow), 0 0 35px #90caff12; border-color: #b3e2ff66; }
+.index, .open { background: #d3e6ff12; border-color: #e1efff44; backdrop-filter: blur(18px); }
+.filters { border-radius: 30px; padding: 5px; }
+.filters button { color: #bdcbe0; }
+.filters button.selected {
+  color: #e1fbff;
+  background: linear-gradient(120deg, #b6faff25, #b3b1ff17);
+  border-color: #d2f7ff55;
+  box-shadow: inset 0 1px #ffffff25, 0 3px 12px #050c2220;
+}
+.hero-cta {
+  border-radius: 12px;
+  background: linear-gradient(120deg, #b8f2ff2b, #a3b9ff1a);
+  border: 1px solid #c9faff80;
+  color: #e5fbff;
+  box-shadow: inset 0 1px #ffffff40, 0 0 30px #8bceff16;
+  backdrop-filter: blur(20px);
+  font-weight: 500;
+  letter-spacing: -.01em;
+}
+.hero-cta:hover { color: white; background: linear-gradient(120deg, #b8f2ff40, #b0a3ff2b); box-shadow: inset 0 1px #ffffff50, 0 0 35px #8bceff30; }
+.motion-toggle { font-weight: 500; color: #c6d9ed; }
+.possibilities {
+  background: radial-gradient(ellipse at 50% 110%, #8d64c855, transparent 65%), linear-gradient(120deg, #7393cb12, #9078bb0b);
+  backdrop-filter: blur(18px);
+  box-shadow: inset 0 1px #ffffff15, inset 0 -1px #ffffff0a;
+}
+.possibilities h2 { font-weight: 300; letter-spacing: -.075em; }
+.possibilities h2 em { font-weight: 350; letter-spacing: -.05em; }
+.contact h2 a { font-weight: 300; }
+.footer-navigation a { font-size: 11px; color: #b9c7df; }
+.footer-brand p { color: #aabbd5; }
+dialog { background: linear-gradient(135deg, #1e2d46ed, #11192beb); border-color: #d1e7ff40; border-radius: 23px; box-shadow: var(--glass-shadow), 0 0 80px #667bca20; }
+.detail-copy h2 { font-weight: 400; letter-spacing: -.045em; }
+
+@media (max-width: 1000px) {
+  .hero-copy h1 { font-size: 71px; }
+  .project-meta { padding: 18px; }
+  .project-meta h3 { font-size: 17px; }
+}
+@media (max-width: 680px) {
+  header { height: 71px; border-radius: 16px; padding: 0 13px; }
+  nav a { font-size: 10px; }
+  .hero-copy h1 { font-size: clamp(44px, 11.6vw, 72px); line-height: 1.1; letter-spacing: -.065em; }
+  .hero-copy > p { font-size: 12px; }
+  .hero-kicker { font-size: 6px; letter-spacing: .2em; }
+  .vision-section h2 { font-size: 32px; }
+  .innovation-card { border-radius: 18px; }
+  .innovation-card h3 { font-size: 22px; }
+  .project { border-radius: 18px; }
+  .project-meta { padding: 17px 15px 19px; }
+  .project-meta h3 { font-size: 15px; }
+  .project-meta > span { font-size: 7px; }
+  .filters { padding: 4px; }
+  .contact h2 { font-size: 29px; }
+  .footer-navigation a { font-size: 10px; }
+}
+@supports not (backdrop-filter: blur(1px)) {
+  header, .holo-panel, .innovation-card, .project, .filters, dialog { background-color: #172235; }
+}
