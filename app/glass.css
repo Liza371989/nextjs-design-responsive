@@ -89,7 +89,7 @@ h1, h2, h3 { text-wrap: balance; }
 }
 .innovation-card h3 { font-size: 23px; font-weight: 450; letter-spacing: -.045em; }
 .innovation-card p { color: #b4c0d7; font-size: 12px; }
-.innovation-card:hover, .innovation-card[open] {
+.innovation-card:hover, .innovation-card details[open] {
   border-color: #bedfff70;
   box-shadow: var(--glass-shadow), 0 0 40px #9cbcff0e;
 }

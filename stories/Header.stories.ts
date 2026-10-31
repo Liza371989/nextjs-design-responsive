@@ -4,6 +4,15 @@ import { fn } from 'storybook/test';
 
 import { Header } from './Header';
 
+const headerArgs = {
+  brand: '◆',
+  brandTitle: 'Acme',
+  welcomePrefix: 'Welcome,',
+  loginLabel: 'Log in',
+  logoutLabel: 'Log out',
+  createAccountLabel: 'Sign up',
+};
+
 const meta = {
   title: 'Example/Header',
   component: Header,
@@ -14,6 +23,7 @@ const meta = {
     layout: 'fullscreen',
   },
   args: {
+    ...headerArgs,
     onLogin: fn(),
     onLogout: fn(),
     onCreateAccount: fn(),

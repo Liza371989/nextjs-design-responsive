@@ -67,4 +67,9 @@ dialog{opacity:0;translate:0 18px;scale:.98;transition:opacity .3s,translate .4s
 @keyframes atmosphere-drift{from{transform:translate(-5%,-3%) rotate(-8deg);opacity:.2}to{transform:translate(5%,3%) rotate(8deg);opacity:.6}}
 @media(max-width:680px){.toolbar .motion-toggle{margin-top:0}.motion-badge{font-size:5px;right:13px}.toolbar{gap:17px}}
 @media(prefers-reduced-motion:reduce){.motion-toggle,.motion-badge{display:none}.scene-frame{transform:none}.scene-atmosphere{opacity:.15}}
+
+/* Component primitives keep shared controls consistent across page sections. */
+.ui-button { border: 0; }
+.ui-button--icon { background: transparent; }
+.innovation-card details[open] .card-expand b { rotate: 45deg; }
 @media(prefers-reduced-motion:no-preference){.motion-scene.is-visible .scene-frame,.motion-scene.is-visible .scene-atmosphere{animation-play-state:var(--scene-play,running)}}
